@@ -1,69 +1,99 @@
-<footer class="bg-slate-900 text-slate-300 pt-20 pb-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-            <!-- Branding -->
-            <div class="col-span-1 md:col-span-2 lg:col-span-1">
-                <a href="/" class="flex items-center gap-2 font-bold text-2xl text-white mb-6">
+<!-- Footer Modern dengan Glassmorphism -->
+<footer class="bg-gradient-to-b from-slate-900 to-slate-950 text-white mt-20">
+    <!-- Main Footer Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <!-- Brand Section -->
+            <div class="space-y-4">
+                <div class="flex items-center gap-2">
                     <div class="w-10 h-10 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-lg flex items-center justify-center">
-                        <img src="{{ asset('img/bem.png') }}" alt="Logo" class="w-full h-full object-cover rounded-lg">
+                        <span class="text-white font-bold text-sm">BEM</span>
                     </div>
-                    <span>BEM Fasilkom</span>
-                </a>
-                <p class="text-slate-400 leading-relaxed mb-8">
-                    Badan Eksekutif Mahasiswa Fakultas Ilmu Komputer Universitas Muhammadiyah Riau. Wadah aspirasi dan kontribusi nyata mahasiswa.
+                    <span class="font-bold text-lg">BEM Fasilkom UMRI</span>
+                </div>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    Badan Eksekutif Mahasiswa Fasilkom berkomitmen untuk memajukan akademik dan organisasi kampus dengan inovasi berkelanjutan.
                 </p>
-                <div class="flex items-center gap-4">
-                    <!-- Social Links -->
-                    <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-cyan-500 hover:text-white transition-all">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                <!-- Social Media Icons -->
+                <div class="flex gap-3 pt-2">
+                    <a href="#" class="w-10 h-10 bg-white/10 hover:bg-cyan-500 rounded-lg flex items-center justify-center transition duration-300 backdrop-blur">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-white/10 hover:bg-cyan-500 rounded-lg flex items-center justify-center transition duration-300 backdrop-blur">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"/></svg>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-white/10 hover:bg-cyan-500 rounded-lg flex items-center justify-center transition duration-300 backdrop-blur">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2s9 5 20 5a9.5 9.5 0 00-9-5.5c4.75 2.25 7-7 7-7a10.66 10.66 0 01-10 5.5z"/></svg>
                     </a>
                 </div>
             </div>
 
-            <!-- Links -->
-            <div>
-                <h4 class="font-bold text-white mb-6">Navigasi</h4>
-                <ul class="space-y-4">
-                    <li><a href="/berita" class="hover:text-cyan-500 transition">Berita</a></li>
-                    <li><a href="/gallery" class="hover:text-cyan-500 transition">Galeri</a></li>
-                    <li><a href="/struktur" class="hover:text-cyan-500 transition">Struktur</a></li>
-                    <li><a href="/agenda" class="hover:text-cyan-500 transition">Agenda</a></li>
+            <!-- Quick Links -->
+            <div class="space-y-4">
+                <h3 class="font-bold text-lg">Navigasi</h3>
+                <ul class="space-y-2">
+                    <li><a href="/" class="text-slate-400 hover:text-cyan-400 transition">Home</a></li>
+                    <li><a href="/berita" class="text-slate-400 hover:text-cyan-400 transition">Berita</a></li>
+                    <li><a href="/gallery" class="text-slate-400 hover:text-cyan-400 transition">Galeri</a></li>
+                    <li><a href="/struktur" class="text-slate-400 hover:text-cyan-400 transition">Struktur BEM</a></li>
+                    <li><a href="/agenda" class="text-slate-400 hover:text-cyan-400 transition">Agenda</a></li>
                 </ul>
             </div>
 
-            <!-- Support -->
-            <div>
-                <h4 class="font-bold text-white mb-6">Dukungan</h4>
-                <ul class="space-y-4">
-                    <li><a href="/lapor" class="hover:text-cyan-500 transition">Lapor Aspirasi</a></li>
-                    <li><a href="/tentang" class="hover:text-cyan-500 transition">Tentang Kami</a></li>
-                    <li><a href="/kontak" class="hover:text-cyan-500 transition">Kontak</a></li>
+            <!-- Information -->
+            <div class="space-y-4">
+                <h3 class="font-bold text-lg">Informasi</h3>
+                <ul class="space-y-3 text-sm text-slate-400">
+                    <li class="flex gap-2">
+                        <svg class="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        <span>Fasilitas Komputer, UMRI<br>Pekanbaru, Indonesia</span>
+                    </li>
+                    <li class="flex gap-2">
+                        <svg class="w-5 h-5 text-cyan-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        <span>bem@fasilkom.umri.ac.id</span>
+                    </li>
+                    <li class="flex gap-2">
+                        <svg class="w-5 h-5 text-cyan-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                        <span>+62 761 12345</span>
+                    </li>
                 </ul>
             </div>
 
-            <!-- Location -->
-            <div>
-                <h4 class="font-bold text-white mb-6">Lokasi</h4>
-                <p class="text-slate-400 text-sm leading-relaxed mb-4">
-                    Kampus Utama UMRI, Gedung Ahmad Dahlan<br>
-                    Jl. Tuanku Tambusai, Pekanbaru, Riau
-                </p>
-                <div class="rounded-xl overflow-hidden h-32 grayscale opacity-50">
-                    <!-- Map Placeholder -->
-                    <div class="w-full h-full bg-slate-800 flex items-center justify-center">
-                        <svg class="w-8 h-8 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                    </div>
-                </div>
+            <!-- Newsletter -->
+            <div class="space-y-4">
+                <h3 class="font-bold text-lg">Newsletter</h3>
+                <p class="text-slate-400 text-sm">Dapatkan update terbaru dari BEM Fasilkom</p>
+                <form class="space-y-2" x-data="{ email: '' }">
+                    <input type="email" placeholder="Email Anda" 
+                        class="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 backdrop-blur">
+                    <button type="submit" 
+                        class="w-full px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 rounded-lg font-semibold transition">
+                        Subscribe
+                    </button>
+                </form>
             </div>
         </div>
+    </div>
 
-        <div class="pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p class="text-slate-500 text-sm">
-                &copy; {{ date('Y') }} BEM Fasilkom UMRI. All rights reserved.
-            </p>
-            <p class="text-slate-500 text-sm">
-                Developed by BEM Fasilkom Team
-            </p>
+    <!-- Divider -->
+    <div class="border-t border-white/10"></div>
+
+    <!-- Bottom Footer -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-400">
+            <p>&copy; 2026 BEM FASILKOM UMRI. All rights reserved.</p>
+            <div class="flex gap-4">
+                <a href="#" class="hover:text-cyan-400 transition">Kebijakan Privasi</a>
+                <a href="#" class="hover:text-cyan-400 transition">Syarat & Ketentuan</a>
+                <a href="#" class="hover:text-cyan-400 transition">Kontak</a>
+            </div>
         </div>
     </div>
 </footer>
+
+<style>
+    footer {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+    }
+</style>

@@ -1,39 +1,11 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
 
 @theme {
-    --color-primary: #0ea5e9;
-    --color-secondary: #2563eb;
-    --color-accent: #22d3ee;
-}
-
-@layer base {
-    body {
-        @apply bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 antialiased;
-    }
-}
-
-@layer components {
-    .glass {
-        @apply backdrop-blur-md bg-white/70 border border-white/20 shadow-xl;
-    }
-    
-    .glass-dark {
-        @apply backdrop-blur-md bg-slate-900/70 border border-slate-700/50 shadow-xl;
-    }
-
-    .btn-primary {
-        @apply px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-lg font-semibold hover:from-cyan-600 hover:to-blue-700 shadow-lg hover:shadow-xl hover:scale-105 transition-all;
-    }
-
-    .btn-secondary {
-        @apply px-6 py-3 bg-white dark:bg-slate-800 text-slate-900 dark:text-white rounded-lg font-semibold hover:bg-slate-100 dark:hover:bg-slate-700 shadow-lg transition-all;
-    }
-
-    .card-premium {
-        @apply glass dark:glass-dark rounded-2xl overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300;
-    }
-
-    .gradient-text {
-        @apply bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent;
-    }
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
 }

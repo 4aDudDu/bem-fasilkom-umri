@@ -40,15 +40,14 @@ class LaporanController extends Controller
 
         $laporan = Laporan::create($validated);
 
-        // Send to Discord
+        /*
         try {
             $messageId = $this->discordService->sendLaporanEmbed($laporan);
             $laporan->update(['discord_message_id' => $messageId]);
         } catch (\Exception $e) {
-            \Log::error('Laporan Store Error: ' . $e->getMessage());
-            \Log::error($e->getTraceAsString());
-            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+            \Log::error('Discord webhook error: ' . $e->getMessage());
         }
+        */
 
         if ($request->wantsJson()) {
             return response()->json([

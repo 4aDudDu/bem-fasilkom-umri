@@ -14,16 +14,18 @@
     <meta property="og:description" content="@yield('meta_description', 'Website Resmi BEM FASILKOM Universitas Muhammadiyah Riau.')">
     <meta property="og:image" content="@yield('meta_image', asset('images/og-image.jpg'))">
 
-    <meta name="theme-color" content="#3b82f6">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ url()->current() }}">
+    <meta property="twitter:title" content="@yield('title', 'BEM Fasilkom UMRI')">
+    <meta property="twitter:description" content="@yield('meta_description', 'Website Resmi BEM FASILKOM Universitas Muhammadiyah Riau.')">
+    <meta property="twitter:image" content="@yield('meta_image', asset('images/og-image.jpg'))">
+
+    <meta name="theme-color" content="#0ea5e9">
     <title>@yield('title', 'BEM Fasilkom UMRI') - Badan Eksekutif Mahasiswa</title>
     
     <!-- Favicon -->
-    <link rel="icon" href="{{ asset('img/bem.png') }}">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230ea5e9' width='100' height='100'/><text x='50' y='65' font-size='60' font-weight='bold' text-anchor='middle' fill='white' font-family='Arial'>BEM</text></svg>">
 
     <!-- Vite CSS & JS -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -31,31 +33,120 @@
     <!-- AOS Animation -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
-    <script>
-        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark')
+    <!-- Custom Styles -->
+    <style>
+        * {
+            @apply transition-colors duration-300;
         }
-    </script>
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        /* Glassmorphism Effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .glass-dark {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            @apply bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent;
+        }
+
+        /* Modern Button */
+        .btn-primary {
+            @apply px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-lg font-semibold hover:from-cyan-600 hover:to-blue-700 shadow-lg hover:shadow-xl hover:scale-105 transition-all;
+        }
+
+        .btn-secondary {
+            @apply px-6 py-3 bg-white text-slate-900 rounded-lg font-semibold hover:bg-slate-100 shadow-lg transition-all;
+        }
+
+        /* Card Hover Effect */
+        .card-hover {
+            @apply hover:shadow-2xl hover:-translate-y-2 transition-all duration-300;
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            @apply bg-slate-200 dark:bg-slate-800;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            @apply bg-gradient-to-b from-cyan-500 to-blue-600 rounded-full;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            @apply from-cyan-600 to-blue-700;
+        }
+
+        /* Loading Skeleton */
+        .skeleton {
+            @apply bg-gradient-to-r from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-800 rounded animate-pulse;
+        }
+
+        /* Dark Mode Support */
+        @media (prefers-color-scheme: dark) {
+            .glass {
+                background: rgba(15, 23, 42, 0.7);
+                border-color: rgba(255, 255, 255, 0.1);
+            }
+        }
+    </style>
+
+    @stack('styles')
 </head>
 
-<body class="bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 font-sans antialiased overflow-x-hidden">
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans overflow-x-hidden">
     
-    <!-- Header -->
-    @include('layouts.header')
+    <!-- Alpine.js Data Container -->
+    <div x-data="{ 
+        darkMode: localStorage.getItem('darkMode') === 'true',
+        mobileMenuOpen: false
+    }" 
+        @load.window="$watch('darkMode', val => {
+            localStorage.setItem('darkMode', val);
+            if (val) document.documentElement.classList.add('dark');
+            else document.documentElement.classList.remove('dark');
+        })"
+        :class="{ 'dark': darkMode }">
 
-    <!-- Main Content -->
-    <main>
-        @yield('content')
-    </main>
+        <!-- Header -->
+        @include('layouts.header')
 
-    <!-- Footer -->
-    @include('layouts.footer')
+        <!-- Main Content -->
+        <main class="min-h-screen">
+            @yield('content')
+        </main>
+
+        <!-- Footer -->
+        @include('layouts.footer')
+    </div>
 
     <!-- AOS Animation -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -70,7 +161,13 @@
     <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    <!-- Global Scripts -->
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+    <!-- Scripts Stack -->
+    @stack('scripts')
+
+    <!-- Global Script untuk Toast -->
     <script>
         window.showToast = function(message, type = 'success') {
             Swal.fire({
@@ -80,57 +177,45 @@
                 title: message,
                 showConfirmButton: false,
                 timer: 3000,
-                timerProgressBar: true
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer);
+                    toast.addEventListener('mouseleave', Swal.resumeTimer);
+                }
             });
         };
 
-        // Navbar Scroll Effect
-        window.onscroll = function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('py-2');
-                navbar.querySelector('nav').classList.add('shadow-2xl', 'bg-white/95');
-            } else {
-                navbar.classList.remove('py-2');
-                navbar.querySelector('nav').classList.remove('shadow-2xl', 'bg-white/95');
-            }
+        window.showConfirm = function(title, message, callback) {
+            Swal.fire({
+                title: title,
+                text: message,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#0ea5e9',
+                cancelButtonColor: '#64748b',
+                confirmButtonText: 'Ya, Lanjutkan!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed && callback) {
+                    callback();
+                }
+            });
         };
 
-        // Dark Mode Toggle
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        // Dark Mode Toggle Event Listener
+        document.addEventListener('toggle-dark-mode', function() {
+            const htmlTag = document.documentElement;
+            htmlTag.classList.toggle('dark');
+            const isDark = htmlTag.classList.contains('dark');
+            localStorage.setItem('darkMode', isDark);
+        });
 
-        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            themeToggleLightIcon?.classList.remove('hidden');
-        } else {
-            themeToggleDarkIcon?.classList.remove('hidden');
-        }
-
-        themeToggleBtn?.addEventListener('click', function() {
-            themeToggleDarkIcon.classList.toggle('hidden');
-            themeToggleLightIcon.classList.toggle('hidden');
-
-            if (localStorage.getItem('color-theme')) {
-                if (localStorage.getItem('color-theme') === 'light') {
-                    document.documentElement.classList.add('dark');
-                    localStorage.setItem('color-theme', 'dark');
-                } else {
-                    document.documentElement.classList.remove('dark');
-                    localStorage.setItem('color-theme', 'light');
-                }
-            } else {
-                if (document.documentElement.classList.contains('dark')) {
-                    document.documentElement.classList.remove('dark');
-                    localStorage.setItem('color-theme', 'light');
-                } else {
-                    document.documentElement.classList.add('dark');
-                    localStorage.setItem('color-theme', 'dark');
-                }
+        // Initialize dark mode on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            if (localStorage.getItem('darkMode') === 'true') {
+                document.documentElement.classList.add('dark');
             }
         });
     </script>
-
-    @stack('scripts')
 </body>
 </html>
