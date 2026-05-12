@@ -46,6 +46,9 @@ Route::prefix('lapor')->group(function () {
 });
 
 // Other Pages
+Route::get('/adryan', function () {
+    return view('pages.aku');
+})->name('aku');
 Route::get('/tentang', function () {
     return view('pages.tentang');
 })->name('tentang');

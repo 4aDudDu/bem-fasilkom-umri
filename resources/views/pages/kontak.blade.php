@@ -21,7 +21,7 @@
                     <div>
                         <h3 class="font-bold mb-2">Alamat</h3>
                         <p class="text-slate-600 dark:text-slate-400">
-                            Fakultas Sains dan Teknologi<br>
+                            Fakultas Ilmu Komputer<br>
                             Universitas Muhammadiyah Riau<br>
                             Jl. KH. Ahmad Dahlan No. 256, Pekanbaru
                         </p>

@@ -44,9 +44,15 @@ class AngkatanBemResource extends Resource
                 Tables\Columns\TextColumn::make('tahun')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\IconColumn::make('is_active')
-                    ->label('Aktif')
-                    ->boolean(),
+                Tables\Columns\ToggleColumn::make('is_active')
+                    ->label('Status Aktif')
+                    ->onColor('success')
+                    ->offColor('danger')
+                    ->afterStateUpdated(function ($record, $state) {
+                        if ($state) {
+                            AngkatanBem::query()->where('id', '!=', $record->id)->update(['is_active' => false]);
+                        }
+                    }),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -56,16 +62,6 @@ class AngkatanBemResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\Action::make('activate')
-                    ->label('Aktifkan')
-                    ->icon('heroicon-o-check-circle')
-                    ->color('success')
-                    ->action(function (AngkatanBem $record) {
-                        AngkatanBem::query()->update(['is_active' => false]);
-                        $record->update(['is_active' => true]);
-                    })
-                    ->requiresConfirmation()
-                    ->hidden(fn (AngkatanBem $record) => $record->is_active),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([

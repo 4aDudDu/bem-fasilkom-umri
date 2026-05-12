@@ -11,7 +11,7 @@
                             <img src="{{ asset('img/bem.png') }}" alt="Logo BEM Fasilkom" class="w-8 h-8 object-contain">
                         </div>
                         <span class="text-white font-bold hidden sm:inline tracking-tight">
-                            BEM Fasilkom
+                            BEM FASILKOM UMRI
                         </span>
                     </a>
                 </div>
@@ -62,22 +62,7 @@
                     </a>
                 </div>
 
-                <!-- Right Side: Dark Mode + Mobile Menu Button -->
-                <div class="flex items-center gap-3">
-                    <!-- Dark Mode Toggle -->
-                    <button @click="darkMode = !darkMode" 
-                        class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-cyan-500 hover:text-white transition-all duration-300">
-                        <svg class="w-5 h-5" :class="{ 'hidden': darkMode }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9h-1m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 5a7 7 0 000 14 7 7 0 000-14z"/></svg>
-                        <svg class="w-5 h-5" :class="{ 'hidden': !darkMode }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
-                    </button>
-
-                    <!-- Mobile Menu Button -->
-                    <button class="lg:hidden p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400"
-                        @click="mobileMenuOpen = !mobileMenuOpen">
-                        <svg class="w-6 h-6" :class="{ 'hidden': mobileMenuOpen }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-                        <svg class="w-6 h-6" :class="{ 'hidden': !mobileMenuOpen }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-                    </button>
-                </div>
+         
             </div>
         </div>
 
