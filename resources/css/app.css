@@ -1,50 +1,39 @@
 @import "tailwindcss";
 
 @theme {
-    --color-primary: #3b82f6;
-    --color-secondary: #6366f1;
-    --color-accent: #06b6d4;
-    
-    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
-    
-    --radius-3xl: 1.5rem;
-    --radius-4xl: 2rem;
+    --color-primary: #0ea5e9;
+    --color-secondary: #2563eb;
+    --color-accent: #22d3ee;
 }
 
 @layer base {
     body {
-        @apply bg-white text-slate-900 antialiased;
+        @apply bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 antialiased;
     }
 }
 
 @layer components {
+    .glass {
+        @apply backdrop-blur-md bg-white/70 border border-white/20 shadow-xl;
+    }
+    
+    .glass-dark {
+        @apply backdrop-blur-md bg-slate-900/70 border border-slate-700/50 shadow-xl;
+    }
+
     .btn-primary {
-        @apply px-8 py-3 bg-blue-600 text-white rounded-full font-bold shadow-lg shadow-blue-500/30 hover:bg-blue-700 hover:scale-105 transition-all duration-300 inline-flex items-center gap-2;
+        @apply px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-lg font-semibold hover:from-cyan-600 hover:to-blue-700 shadow-lg hover:shadow-xl hover:scale-105 transition-all;
     }
 
     .btn-secondary {
-        @apply px-8 py-3 bg-slate-100 text-slate-700 rounded-full font-bold hover:bg-slate-200 transition-all duration-300 inline-flex items-center gap-2;
-    }
-
-    .glass-nav {
-        @apply backdrop-blur-md bg-white/90 border-b border-slate-100 shadow-sm transition-all duration-300;
+        @apply px-6 py-3 bg-white dark:bg-slate-800 text-slate-900 dark:text-white rounded-lg font-semibold hover:bg-slate-100 dark:hover:bg-slate-700 shadow-lg transition-all;
     }
 
     .card-premium {
-        @apply bg-white border border-slate-100 rounded-3xl p-8 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500;
+        @apply glass dark:glass-dark rounded-2xl overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300;
     }
 
-    .heading-huge {
-        @apply text-5xl md:text-7xl font-black tracking-tight text-slate-900 leading-tight;
+    .gradient-text {
+        @apply bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent;
     }
-}
-
-/* Animations */
-@keyframes soft-float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-.animate-soft-float {
-    animation: soft-float 4s ease-in-out infinite;
 }
