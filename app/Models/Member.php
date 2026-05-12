@@ -44,11 +44,11 @@ class Member extends Model
     }
 
     /**
-     * Check if member is KSB (Ketua, Sekretaris, Bendahara)
+     * Check if member is KSB (Ketua/Gubernur, Sekretaris, Bendahara)
      */
     public function isKsb(): bool
     {
-        return in_array($this->jabatan, ['Ketua', 'Sekretaris', 'Bendahara']);
+        return in_array($this->jabatan, ['Gubernur', 'Wakil Gubernur', 'Ketua', 'Wakil Ketua', 'Sekretaris', 'Bendahara']);
     }
 
     /**
@@ -56,7 +56,7 @@ class Member extends Model
      */
     public function scopeKsb($query)
     {
-        return $query->whereIn('jabatan', ['Ketua', 'Sekretaris', 'Bendahara']);
+        return $query->whereIn('jabatan', ['Gubernur', 'Wakil Gubernur', 'Ketua', 'Wakil Ketua', 'Sekretaris', 'Bendahara']);
     }
 
     /**

@@ -15,6 +15,7 @@ class StrukturController extends Controller
 
         $ksb = Member::ksb()
             ->where('angkatan_bem_id', $activeAngkatan?->id)
+            ->ordered()
             ->get();
 
         $divisi = Division::where('angkatan_bem_id', $activeAngkatan?->id)

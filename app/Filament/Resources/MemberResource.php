@@ -28,7 +28,6 @@ class MemberResource extends Resource
                             ->avatar()
                             ->directory('members')
                             ->imageEditor()
-                            ->circleHorizontal()
                             ->columnSpanFull(),
                         Forms\Components\TextInput::make('name')
                             ->required()
