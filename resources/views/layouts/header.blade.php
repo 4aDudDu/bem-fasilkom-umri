@@ -1,6 +1,6 @@
 <!-- Header/Navbar Modern dengan Blur Effect & Dark Mode Toggle -->
 <header class="navbar-header sticky top-0 z-50 transition-all duration-300" id="navbar">
-    <nav class="backdrop-blur-md bg-gradient-to-r from-blue-600 to-white dark:from-blue-900 dark:to-slate-900 border-b border-white/20 dark:border-slate-700/50 shadow-lg">
+    <nav class="backdrop-blur-md bg-slate-900/80 border-b border-white/10 shadow-2xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 

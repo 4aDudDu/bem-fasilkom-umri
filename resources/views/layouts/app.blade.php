@@ -122,7 +122,7 @@
     @stack('styles')
 </head>
 
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans overflow-x-hidden">
+<body class="bg-slate-950 text-slate-100 font-sans overflow-x-hidden">
     
     <!-- Alpine.js Data Container -->
     <div x-data="{ 
