@@ -7,7 +7,7 @@
                 <div class="swiper-slide">
                     <div class="relative w-full h-full group">
                         <!-- Background Image -->
-                        <img src="{{ $carousel->image }}" alt="{{ $carousel->title }}" 
+                        <img src="{{ asset('uploads/' . $carousel->image) }}" alt="{{ $carousel->title }}" 
                             class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                         
                         <!-- Overlay Gradient -->

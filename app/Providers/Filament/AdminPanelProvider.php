@@ -29,7 +29,14 @@ class AdminPanelProvider extends PanelProvider
             ->login()
             ->colors([
                 'primary' => Color::Cyan,
+                'gray' => Color::Slate,
             ])
+            ->font('Outfit')
+            ->brandLogo(asset('img/bem.png'))
+            ->brandLogoHeight('3rem')
+            ->favicon(asset('img/bem.png'))
+            ->sidebarCollapsibleOnDesktop()
+            ->maxContentWidth('full')
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
@@ -37,8 +44,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
-                Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
+                // Default widgets removed for cleaner look
             ])
             ->middleware([
                 EncryptCookies::class,

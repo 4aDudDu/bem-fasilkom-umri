@@ -24,6 +24,7 @@ class Berita extends Model
         'published_at',
         'views',
         'is_published',
+        'images',
         'tags',
     ];
 
@@ -31,6 +32,7 @@ class Berita extends Model
         'is_published' => 'boolean',
         'published_at' => 'datetime',
         'tags' => 'json',
+        'images' => 'json',
         'views' => 'integer',
     ];
 

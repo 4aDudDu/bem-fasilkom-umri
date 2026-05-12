@@ -40,7 +40,7 @@
 </section>
 
 <!-- About Section -->
-<section class="py-16 md:py-24 bg-slate-50 dark:bg-slate-900">
+<section class="py-16 md:py-24 bg-white dark:bg-slate-900">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <!-- Content -->
@@ -115,7 +115,7 @@
                 @foreach($ksb as $member)
                     <div class="glass dark:glass-dark rounded-xl overflow-hidden card-hover group" data-aos="zoom-in" data-aos-delay="{{ $loop->index * 100 }}">
                         <div class="relative overflow-hidden h-80">
-                            <img src="{{ $member->photo }}" alt="{{ $member->name }}" 
+                            <img src="{{ $member->photo ? asset('uploads/' . $member->photo) : 'https://media.istockphoto.com/id/1208175274/id/vektor/ikon-vektor-avatar-ilustrasi-elemen-sederhanaavatar-ikon-vektor-ilustrasi-vektor-konsep.jpg?s=612x612&w=0&k=20&c=DND6ivQIRnLrF4UhqlOhqcyuxbwnU10c440HKdLNMzc=' }}" alt="{{ $member->name }}" 
                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6">
                                 <h3 class="text-2xl font-bold text-white">{{ $member->name }}</h3>
@@ -145,7 +145,7 @@
 
 <!-- Latest News Section -->
 @if($beritaTerbaru->count() > 0)
-    <section class="py-16 md:py-24 bg-slate-50 dark:bg-slate-900">
+    <section class="py-16 md:py-24 bg-white dark:bg-slate-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center mb-12" data-aos="fade-up">
                 <div>
@@ -162,11 +162,28 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
                 @foreach($beritaTerbaru as $berita)
                     <a href="{{ route('berita.show', $berita->slug) }}" class="glass dark:glass-dark rounded-xl overflow-hidden card-hover group transition-all" data-aos="zoom-in">
-                        <!-- Thumbnail -->
+                        <!-- Thumbnail / Slider -->
                         <div class="relative overflow-hidden h-48">
-                            <img src="{{ $berita->thumbnail }}" alt="{{ $berita->title }}" 
-                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-4 right-4">
+                            @if($berita->images && count($berita->images) > 0)
+                                <div class="swiper-container news-swiper h-full" id="news-swiper-{{ $berita->id }}">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="{{ asset('uploads/' . $berita->thumbnail) }}" alt="{{ $berita->title }}" class="w-full h-full object-cover">
+                                        </div>
+                                        @foreach($berita->images as $img)
+                                            <div class="swiper-slide">
+                                                <img src="{{ asset('uploads/' . $img) }}" alt="{{ $berita->title }}" class="w-full h-full object-cover">
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                    <div class="swiper-pagination !bottom-2"></div>
+                                </div>
+                            @else
+                                <img src="{{ asset('uploads/' . $berita->thumbnail) }}" alt="{{ $berita->title }}" 
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            @endif
+                            
+                            <div class="absolute top-4 right-4 z-10">
                                 <span class="bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
                                     {{ $berita->category?->name ?? 'Berita' }}
                                 </span>
@@ -221,7 +238,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 @foreach($galeriTerbaru as $gallery)
                     <a href="{{ route('gallery.show', $gallery->slug) }}" class="group relative overflow-hidden rounded-xl card-hover" data-aos="zoom-in">
-                        <img src="{{ $gallery->image }}" alt="{{ $gallery->title }}" 
+                        <img src="{{ asset('uploads/' . $gallery->image) }}" alt="{{ $gallery->title }}" 
                             class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
                         <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all flex items-end justify-start p-4">
                             <div class="translate-y-8 group-hover:translate-y-0 transition-transform">
@@ -258,7 +275,7 @@
                         <div class="md:flex">
                             <!-- Poster -->
                             <div class="relative w-full md:w-1/3 h-48 md:h-auto overflow-hidden">
-                                <img src="{{ $agenda->poster }}" alt="{{ $agenda->title }}" 
+                                <img src="{{ asset('uploads/' . $agenda->poster) }}" alt="{{ $agenda->title }}" 
                                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                             </div>
 
@@ -323,5 +340,26 @@
         </div>
     </div>
 </section>
+
+@push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // News Card Swipers
+            document.querySelectorAll('.news-swiper').forEach(el => {
+                new Swiper(el, {
+                    loop: true,
+                    pagination: {
+                        el: el.querySelector('.swiper-pagination'),
+                        clickable: true,
+                    },
+                    autoplay: {
+                        delay: 3000,
+                        disableOnInteraction: false,
+                    },
+                });
+            });
+        });
+    </script>
+@endpush
 
 @endsection

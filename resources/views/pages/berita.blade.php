@@ -54,12 +54,30 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                 @forelse($berita as $item)
                     <a href="{{ route('berita.show', $item->slug) }}" class="glass dark:glass-dark rounded-xl overflow-hidden card-hover group transition-all" data-aos="zoom-in">
+                        <!-- Thumbnail / Slider -->
                         <div class="relative overflow-hidden h-48">
-                            <img src="{{ $item->thumbnail }}" alt="{{ $item->title }}" 
-                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-4 right-4">
+                            @if($item->images && count($item->images) > 0)
+                                <div class="swiper-container news-swiper h-full" id="news-swiper-{{ $item->id }}">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="{{ asset('uploads/' . $item->thumbnail) }}" alt="{{ $item->title }}" class="w-full h-full object-cover">
+                                        </div>
+                                        @foreach($item->images as $img)
+                                            <div class="swiper-slide">
+                                                <img src="{{ asset('uploads/' . $img) }}" alt="{{ $item->title }}" class="w-full h-full object-cover">
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                    <div class="swiper-pagination !bottom-2"></div>
+                                </div>
+                            @else
+                                <img src="{{ asset('uploads/' . $item->thumbnail) }}" alt="{{ $item->title }}" 
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            @endif
+                            
+                            <div class="absolute top-4 right-4 z-10">
                                 <span class="bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
-                                    {{ $item->category?->name }}
+                                    {{ $item->category?->name ?? 'Berita' }}
                                 </span>
                             </div>
                         </div>
@@ -70,7 +88,7 @@
                             <h3 class="font-bold text-lg mb-3 line-clamp-2 group-hover:text-cyan-600 transition">
                                 {{ $item->title }}
                             </h3>
-                            <p class="text-slate-600 dark:text-slate-400 text-sm line-clamp-3 mb-4">
+                            <p class="text-slate-600 dark:text-slate-400 text-sm line-clamp-3 mb-4 text-justify">
                                 {{ $item->description }}
                             </p>
                             <div class="flex items-center justify-between text-sm">
@@ -96,5 +114,19 @@
         </main>
     </div>
 </div>
+
+@push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.news-swiper').forEach(el => {
+                new Swiper(el, {
+                    loop: true,
+                    pagination: { el: el.querySelector('.swiper-pagination'), clickable: true },
+                    autoplay: { delay: 3000, disableOnInteraction: false },
+                });
+            });
+        });
+    </script>
+@endpush
 
 @endsection

@@ -58,4 +58,8 @@ Route::get('/faq', function () {
     return view('pages.faq');
 })->name('faq');
 
+Route::get('/sk-bem', function () {
+    return view('pages.sk');
+})->name('sk-bem');
+
 // Filament Admin Routes (auto-registered by Filament plugin)

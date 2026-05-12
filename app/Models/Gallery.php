@@ -14,6 +14,7 @@ class Gallery extends Model
         'title',
         'slug',
         'image',
+        'images',
         'description',
         'category_id',
         'angkatan_bem_id',
@@ -24,6 +25,7 @@ class Gallery extends Model
     protected $casts = [
         'is_published' => 'boolean',
         'order' => 'integer',
+        'images' => 'json',
     ];
 
     /**

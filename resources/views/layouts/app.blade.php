@@ -25,7 +25,7 @@
     <title>@yield('title', 'BEM Fasilkom UMRI') - Badan Eksekutif Mahasiswa</title>
     
     <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230ea5e9' width='100' height='100'/><text x='50' y='65' font-size='60' font-weight='bold' text-anchor='middle' fill='white' font-family='Arial'>BEM</text></svg>">
+    <link rel="icon" href="{{ asset('img/bem.png') }}" type="image/png">
 
     <!-- Vite CSS & JS -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -122,19 +122,23 @@
     @stack('styles')
 </head>
 
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans overflow-x-hidden">
+<body class="bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans overflow-x-hidden">
     
     <!-- Alpine.js Data Container -->
     <div x-data="{ 
         darkMode: localStorage.getItem('darkMode') === 'true',
-        mobileMenuOpen: false
-    }" 
-        @load.window="$watch('darkMode', val => {
-            localStorage.setItem('darkMode', val);
-            if (val) document.documentElement.classList.add('dark');
+        mobileMenuOpen: false,
+        init() {
+            this.$watch('darkMode', val => {
+                localStorage.setItem('darkMode', val);
+                if (val) document.documentElement.classList.add('dark');
+                else document.documentElement.classList.remove('dark');
+            });
+            // Initial state
+            if (this.darkMode) document.documentElement.classList.add('dark');
             else document.documentElement.classList.remove('dark');
-        })"
-        :class="{ 'dark': darkMode }">
+        }
+    }">
 
         <!-- Header -->
         @include('layouts.header')
@@ -163,6 +167,9 @@
 
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+    <!-- FSLightbox for Image Zooming -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.3.1/index.min.js"></script>
 
     <!-- Scripts Stack -->
     @stack('scripts')
@@ -201,21 +208,6 @@
                 }
             });
         };
-
-        // Dark Mode Toggle Event Listener
-        document.addEventListener('toggle-dark-mode', function() {
-            const htmlTag = document.documentElement;
-            htmlTag.classList.toggle('dark');
-            const isDark = htmlTag.classList.contains('dark');
-            localStorage.setItem('darkMode', isDark);
-        });
-
-        // Initialize dark mode on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            if (localStorage.getItem('darkMode') === 'true') {
-                document.documentElement.classList.add('dark');
-            }
-        });
     </script>
 </body>
 </html>

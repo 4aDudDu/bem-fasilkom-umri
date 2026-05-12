@@ -26,17 +26,28 @@ class GalleryResource extends Resource
                         Forms\Components\TextInput::make('title')
                             ->required()
                             ->maxLength(255),
-                        Forms\Components\TextInput::make('category')
-                            ->placeholder('Contoh: Kegiatan, Prestasi, dll')
-                            ->required()
-                            ->maxLength(255),
+                        Forms\Components\Select::make('category_id')
+                            ->relationship('category', 'name')
+                            ->searchable()
+                            ->preload()
+                            ->required(),
                         Forms\Components\Select::make('angkatan_bem_id')
                             ->relationship('angkatanBem', 'tahun')
                             ->required(),
                         Forms\Components\FileUpload::make('image')
+                            ->label('Cover Image')
                             ->image()
+                            ->disk('public')
                             ->directory('gallery')
                             ->required()
+                            ->columnSpanFull(),
+                        Forms\Components\FileUpload::make('images')
+                            ->label('Gallery Foto (Dokumentasi)')
+                            ->image()
+                            ->multiple()
+                            ->reorderable()
+                            ->disk('public')
+                            ->directory('gallery/documentation')
                             ->columnSpanFull(),
                         Forms\Components\Textarea::make('description')
                             ->columnSpanFull(),
@@ -53,8 +64,9 @@ class GalleryResource extends Resource
                 Tables\Columns\TextColumn::make('title')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('category')
+                Tables\Columns\TextColumn::make('category.name')
                     ->badge()
+                    ->color(fn ($record) => $record->category->color ?? 'primary')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('angkatanBem.tahun')
                     ->label('Angkatan')

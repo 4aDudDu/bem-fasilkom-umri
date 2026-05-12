@@ -60,19 +60,7 @@
                 </ul>
             </div>
 
-            <!-- Newsletter -->
-            <div class="space-y-4">
-                <h3 class="font-bold text-lg">Newsletter</h3>
-                <p class="text-slate-400 text-sm">Dapatkan update terbaru dari BEM Fasilkom</p>
-                <form class="space-y-2" x-data="{ email: '' }">
-                    <input type="email" placeholder="Email Anda" 
-                        class="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 backdrop-blur">
-                    <button type="submit" 
-                        class="w-full px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 rounded-lg font-semibold transition">
-                        Subscribe
-                    </button>
-                </form>
-            </div>
+    
         </div>
     </div>
 
@@ -83,11 +71,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-400">
             <p>&copy; 2026 BEM FASILKOM UMRI. All rights reserved.</p>
-            <div class="flex gap-4">
-                <a href="#" class="hover:text-cyan-400 transition">Kebijakan Privasi</a>
-                <a href="#" class="hover:text-cyan-400 transition">Syarat & Ketentuan</a>
-                <a href="#" class="hover:text-cyan-400 transition">Kontak</a>
-            </div>
+           
         </div>
     </div>
 </footer>

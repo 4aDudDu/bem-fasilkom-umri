@@ -18,7 +18,7 @@
                 @foreach($ksb as $member)
                     <div class="glass dark:glass-dark rounded-xl overflow-hidden card-hover group">
                         <div class="relative h-80 overflow-hidden">
-                            <img src="{{ $member->photo ? asset('storage/' . $member->photo) : 'https://media.istockphoto.com/id/1208175274/id/vektor/ikon-vektor-avatar-ilustrasi-elemen-sederhanaavatar-ikon-vektor-ilustrasi-vektor-konsep.jpg?s=612x612&w=0&k=20&c=DND6ivQIRnLrF4UhqlOhqcyuxbwnU10c440HKdLNMzc=' }}" alt="{{ $member->name }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                            <img src="{{ $member->photo ? asset('uploads/' . $member->photo) : 'https://media.istockphoto.com/id/1208175274/id/vektor/ikon-vektor-avatar-ilustrasi-elemen-sederhanaavatar-ikon-vektor-ilustrasi-vektor-konsep.jpg?s=612x612&w=0&k=20&c=DND6ivQIRnLrF4UhqlOhqcyuxbwnU10c440HKdLNMzc=' }}" alt="{{ $member->name }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
                         </div>
                         <div class="p-6">
                             <h3 class="text-2xl font-bold">{{ $member->name }}</h3>

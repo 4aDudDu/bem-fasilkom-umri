@@ -34,6 +34,7 @@ class LaporanController extends Controller
         ]);
 
         // Handle file upload if exists
+        // Handle file upload if exists
         if ($request->hasFile('bukti')) {
             $validated['bukti'] = $request->file('bukti')->store('laporan', 'public');
         }

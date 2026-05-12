@@ -1,16 +1,16 @@
 <!-- Header/Navbar Modern dengan Blur Effect & Dark Mode Toggle -->
 <header class="navbar-header sticky top-0 z-50 transition-all duration-300" id="navbar">
-    <nav class="backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b border-white/20 dark:border-slate-700/50 shadow-lg">
+    <nav class="backdrop-blur-md bg-gradient-to-r from-blue-600 to-white dark:from-blue-900 dark:to-slate-900 border-b border-white/20 dark:border-slate-700/50 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 
                 <!-- Logo -->
                 <div class="flex-shrink-0 group">
                     <a href="/" class="flex items-center gap-2 font-bold text-xl hover:scale-105 transition-transform">
-                        <div class="w-10 h-10 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-lg flex items-center justify-center">
-                            <img src="{{ asset('img/bem.png') }}" alt="Logo BEM Fasilkom">
+                        <div class="w-10 h-10 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-lg flex items-center justify-center shadow-lg">
+                            <img src="{{ asset('img/bem.png') }}" alt="Logo BEM Fasilkom" class="w-8 h-8 object-contain">
                         </div>
-                        <span class="bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent hidden sm:inline">
+                        <span class="text-white font-bold hidden sm:inline tracking-tight">
                             BEM Fasilkom
                         </span>
                     </a>
@@ -18,39 +18,45 @@
 
                 <!-- Menu Desktop -->
                 <div class="hidden lg:flex items-center gap-1">
-                    <a href="/" class="nav-link px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition {{ request()->routeIs('home') ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white' : 'text-slate-700 dark:text-slate-300' }}">
-                        <span class="flex items-center gap-1">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-3m0 0l7-4 7 4M5 9v10a1 1 0 001 1h12a1 1 0 001-1V9m-9 16l4-4m0 0l4 4m-4-4V5"/></svg>
+                    <a href="/" class="nav-link px-3 py-2 rounded-lg hover:bg-white/10 transition {{ request()->routeIs('home') ? 'bg-white/20 text-white shadow-inner' : 'text-white/80' }}">
+                        <span class="flex items-center gap-1.5 text-sm font-semibold">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
                             Home
                         </span>
                     </a>
-                    <a href="/berita" class="nav-link px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition {{ request()->routeIs('berita*') ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white' : 'text-slate-700 dark:text-slate-300' }}">
-                        <span class="flex items-center gap-1">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v10a2 2 0 01-2 2z"/></svg>
+                    <a href="/berita" class="nav-link px-3 py-2 rounded-lg hover:bg-white/10 transition {{ request()->routeIs('berita*') ? 'bg-white/20 text-white shadow-inner' : 'text-white/80' }}">
+                        <span class="flex items-center gap-1.5 text-sm font-semibold">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v10a2 2 0 01-2 2zM9 7h6m-6 4h6m-6 4h4"/></svg>
                             Berita
                         </span>
                     </a>
                     <a href="/gallery" class="nav-link px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition {{ request()->routeIs('gallery*') ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white' : 'text-slate-700 dark:text-slate-300' }}">
-                        <span class="flex items-center gap-1">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        <span class="flex items-center gap-1.5 text-sm font-semibold">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                             Galeri
                         </span>
                     </a>
                     <a href="/struktur" class="nav-link px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition {{ request()->routeIs('struktur*') ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white' : 'text-slate-700 dark:text-slate-300' }}">
-                        <span class="flex items-center gap-1">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 8.048M12 4.354L9 7.354M12 4.354l3 3m-6 8.646l3 3m0 0l3-3m-3 3v4m0 0H7m5 0h5"/></svg>
+                        <span class="flex items-center gap-1.5 text-sm font-semibold">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
                             Struktur
                         </span>
                     </a>
                     <a href="/agenda" class="nav-link px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition {{ request()->routeIs('agenda*') ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white' : 'text-slate-700 dark:text-slate-300' }}">
-                        <span class="flex items-center gap-1">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        <span class="flex items-center gap-1.5 text-sm font-semibold">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                             Agenda
                         </span>
                     </a>
-                    <a href="/lapor" class="nav-link px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition bg-gradient-to-r from-orange-500 to-red-600 text-white">
-                        <span class="flex items-center gap-1">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4v2m0 4v2M8 5h8a2 2 0 012 2v12a2 2 0 01-2 2H8a2 2 0 01-2-2V7a2 2 0 012-2z"/></svg>
+                    <a href="/sk-bem" class="nav-link px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition {{ request()->is('sk-bem') ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white' : 'text-slate-700 dark:text-slate-300' }}">
+                        <span class="flex items-center gap-1.5 text-sm font-semibold">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                            SK BEM
+                        </span>
+                    </a>
+                    <a href="/lapor" class="nav-link px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition bg-gradient-to-r from-orange-500 to-red-600 text-white shadow-md">
+                        <span class="flex items-center gap-1.5 text-sm font-bold">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg>
                             Lapor!
                         </span>
                     </a>
@@ -60,17 +66,13 @@
                 <div class="flex items-center gap-3">
                     <!-- Dark Mode Toggle -->
                     <button @click="darkMode = !darkMode" 
-                        class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition"
-                        x-data="{ darkMode: false }"
-                        @click="$dispatch('toggle-dark-mode')">
-                        <svg class="w-5 h-5 text-yellow-500 dark:hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1m-16 0H1m15.364 1.636l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-                        <svg class="w-5 h-5 text-slate-400 hidden dark:block" fill="currentColor" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                        class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-cyan-500 hover:text-white transition-all duration-300">
+                        <svg class="w-5 h-5" :class="{ 'hidden': darkMode }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9h-1m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 5a7 7 0 000 14 7 7 0 000-14z"/></svg>
+                        <svg class="w-5 h-5" :class="{ 'hidden': !darkMode }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
                     </button>
 
                     <!-- Mobile Menu Button -->
-                    <button @click="mobileMenuOpen = !mobileMenuOpen"
-                        class="lg:hidden p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition"
-                        x-data="{ mobileMenuOpen: false }"
+                    <button class="lg:hidden p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400"
                         @click="mobileMenuOpen = !mobileMenuOpen">
                         <svg class="w-6 h-6" :class="{ 'hidden': mobileMenuOpen }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
                         <svg class="w-6 h-6" :class="{ 'hidden': !mobileMenuOpen }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
@@ -80,15 +82,18 @@
         </div>
 
         <!-- Mobile Menu -->
-        <div x-data="{ mobileMenuOpen: false }" 
-            :class="{ 'block': mobileMenuOpen, 'hidden': !mobileMenuOpen }"
-            class="lg:hidden bg-white dark:bg-slate-900 border-t border-white/20 hidden px-4 py-3 space-y-2">
+        <div x-show="mobileMenuOpen" 
+            x-transition:enter="transition ease-out duration-200"
+            x-transition:enter-start="opacity-0 -translate-y-4"
+            x-transition:enter-end="opacity-100 translate-y-0"
+            class="lg:hidden bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 px-4 py-3 space-y-2">
             <a href="/" class="block px-3 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Home</a>
             <a href="/berita" class="block px-3 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Berita</a>
             <a href="/gallery" class="block px-3 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Galeri</a>
             <a href="/struktur" class="block px-3 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Struktur</a>
             <a href="/agenda" class="block px-3 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Agenda</a>
-            <a href="/lapor" class="block px-3 py-2 rounded-lg bg-gradient-to-r from-orange-500 to-red-600 text-white hover:opacity-90 transition">Lapor!</a>
+            <a href="/sk-bem" class="block px-3 py-2 rounded-lg {{ request()->is('sk-bem') ? 'bg-cyan-500 text-white' : 'text-slate-700 dark:text-slate-300' }} hover:bg-slate-100 dark:hover:bg-slate-800 transition">SK BEM</a>
+            <a href="/lapor" class="block px-3 py-2 rounded-lg bg-gradient-to-r from-orange-500 to-red-600 text-white hover:opacity-90 transition font-bold text-center">Lapor!</a>
         </div>
     </nav>
 </header>
@@ -99,7 +104,7 @@
     }
 
     .navbar-header.scrolled {
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     }
 </style>
 

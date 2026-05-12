@@ -49,8 +49,17 @@ class BeritaResource extends Resource
                             ->schema([
                                 Forms\Components\FileUpload::make('thumbnail')
                                     ->image()
+                                    ->disk('public')
                                     ->directory('berita/thumbnails')
                                     ->required(),
+                                Forms\Components\FileUpload::make('images')
+                                    ->label('Gallery Foto (Opsional)')
+                                    ->image()
+                                    ->multiple()
+                                    ->reorderable()
+                                    ->disk('public')
+                                    ->directory('berita/gallery')
+                                    ->columnSpanFull(),
                                 Forms\Components\Select::make('category_id')
                                     ->relationship('category', 'name')
                                     ->searchable()

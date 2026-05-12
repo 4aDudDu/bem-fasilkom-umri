@@ -52,6 +52,7 @@ class HomeController extends Controller
             
             'ksb' => Member::ksb()
                 ->where('angkatan_bem_id', $activeAngkatan?->id)
+                ->ordered()
                 ->get(),
             
             'totalBerita' => Berita::published()->count(),

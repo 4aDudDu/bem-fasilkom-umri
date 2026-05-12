@@ -26,6 +26,7 @@ class MemberResource extends Resource
                         Forms\Components\FileUpload::make('photo')
                             ->image()
                             ->avatar()
+                            ->disk('public')
                             ->directory('members')
                             ->imageEditor()
                             ->columnSpanFull(),

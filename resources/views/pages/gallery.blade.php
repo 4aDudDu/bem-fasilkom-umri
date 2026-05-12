@@ -28,8 +28,8 @@
     <!-- Masonry Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         @forelse($galeri as $gallery)
-            <a href="{{ route('gallery.show', $gallery->slug) }}" class="group relative overflow-hidden rounded-xl card-hover h-64" data-aos="zoom-in">
-                <img src="{{ $gallery->image }}" alt="{{ $gallery->title }}" 
+            <a href="{{ route('gallery.show', $gallery->slug) }}" class="group relative overflow-hidden rounded-xl card-hover aspect-[4/3]" data-aos="zoom-in">
+                <img src="{{ asset('uploads/' . $gallery->image) }}" alt="{{ $gallery->title }}" 
                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                 <div class="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-all flex items-end justify-start p-4">
                     <div class="translate-y-8 group-hover:translate-y-0 transition-transform">
