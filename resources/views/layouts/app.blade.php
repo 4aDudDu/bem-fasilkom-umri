@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,10 +52,10 @@
 
         /* Glassmorphism Effect */
         .glass {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(15, 23, 42, 0.7);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .glass-dark {
@@ -109,14 +109,6 @@
         .skeleton {
             @apply bg-gradient-to-r from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-800 rounded animate-pulse;
         }
-
-        /* Dark Mode Support */
-        @media (prefers-color-scheme: dark) {
-            .glass {
-                background: rgba(15, 23, 42, 0.7);
-                border-color: rgba(255, 255, 255, 0.1);
-            }
-        }
     </style>
 
     @stack('styles')
@@ -126,18 +118,7 @@
     
     <!-- Alpine.js Data Container -->
     <div x-data="{ 
-        darkMode: localStorage.getItem('darkMode') === 'true',
-        mobileMenuOpen: false,
-        init() {
-            this.$watch('darkMode', val => {
-                localStorage.setItem('darkMode', val);
-                if (val) document.documentElement.classList.add('dark');
-                else document.documentElement.classList.remove('dark');
-            });
-            // Initial state
-            if (this.darkMode) document.documentElement.classList.add('dark');
-            else document.documentElement.classList.remove('dark');
-        }
+        mobileMenuOpen: false
     }">
 
         <!-- Header -->
