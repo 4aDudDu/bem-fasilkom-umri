@@ -9,9 +9,22 @@ use App\Http\Controllers\Controller;
 
 class StrukturController extends Controller
 {
-    public function index()
+    public function index(\Illuminate\Http\Request $request)
     {
-        $activeAngkatan = AngkatanBem::where('is_active', true)->first();
+        $tahun = $request->query('tahun');
+        
+        if ($tahun) {
+            $activeAngkatan = AngkatanBem::where('tahun', $tahun)->first();
+        } else {
+            $activeAngkatan = AngkatanBem::where('is_active', true)->first();
+        }
+        
+        // If still no active angkatan, get the latest one
+        if (!$activeAngkatan) {
+            $activeAngkatan = AngkatanBem::orderBy('tahun', 'desc')->first();
+        }
+
+        $allAngkatan = AngkatanBem::orderBy('tahun', 'desc')->get();
 
         $ksb = Member::ksb()
             ->where('angkatan_bem_id', $activeAngkatan?->id)
@@ -29,6 +42,7 @@ class StrukturController extends Controller
             'ksb' => $ksb,
             'divisi' => $divisi,
             'activeAngkatan' => $activeAngkatan,
+            'allAngkatan' => $allAngkatan,
         ]);
     }
 

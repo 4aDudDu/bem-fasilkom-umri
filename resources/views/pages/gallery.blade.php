@@ -10,16 +10,31 @@
 </div>
 
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <!-- Filter -->
-    <div class="flex justify-between items-center mb-8">
-        <div class="flex gap-2 flex-wrap">
-            <a href="/gallery" class="px-4 py-2 rounded-lg {{ !request('category') ? 'bg-cyan-500 text-white' : 'bg-slate-200 dark:bg-slate-800' }} transition">
-                Semua
+    <div class="space-y-6 mb-12">
+        <!-- Category Filter -->
+        <div class="flex flex-wrap gap-2">
+            <span class="w-full text-sm font-semibold text-slate-500 mb-1">Filter Kategori:</span>
+            <a href="{{ request()->fullUrlWithQuery(['category' => null]) }}" class="px-4 py-2 rounded-lg {{ !request('category') ? 'bg-cyan-500 text-white' : 'bg-slate-200 dark:bg-slate-800' }} transition text-sm">
+                Semua Kategori
             </a>
             @foreach($categories as $category)
-                <a href="/gallery?category={{ $category->id }}" 
+                <a href="{{ request()->fullUrlWithQuery(['category' => $category->id]) }}" 
                     class="px-4 py-2 rounded-lg {{ request('category') == $category->id ? 'bg-cyan-500 text-white' : 'bg-slate-200 dark:bg-slate-800' }} transition text-sm">
                     {{ $category->name }}
+                </a>
+            @endforeach
+        </div>
+
+        <!-- Year Filter -->
+        <div class="flex flex-wrap gap-2">
+            <span class="w-full text-sm font-semibold text-slate-500 mb-1">Filter Angkatan:</span>
+            <a href="{{ request()->fullUrlWithQuery(['angkatan' => null]) }}" class="px-4 py-2 rounded-lg {{ !request('angkatan') ? 'bg-blue-500 text-white' : 'bg-slate-200 dark:bg-slate-800' }} transition text-sm">
+                Semua Angkatan
+            </a>
+            @foreach($angkatanBems as $angkatan)
+                <a href="{{ request()->fullUrlWithQuery(['angkatan' => $angkatan->id]) }}" 
+                    class="px-4 py-2 rounded-lg {{ request('angkatan') == $angkatan->id ? 'bg-blue-500 text-white' : 'bg-slate-200 dark:bg-slate-800' }} transition text-sm">
+                    {{ $angkatan->tahun }}
                 </a>
             @endforeach
         </div>

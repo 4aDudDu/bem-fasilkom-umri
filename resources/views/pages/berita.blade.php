@@ -31,7 +31,7 @@
                     <h4 class="font-semibold mb-3 text-sm uppercase text-slate-600 dark:text-slate-400">Kategori</h4>
                     <div class="space-y-2">
                         @foreach($categories as $category)
-                            <a href="/berita?category={{ $category->id }}"
+                            <a href="{{ request()->fullUrlWithQuery(['category' => $category->id]) }}"
                                 class="flex items-center gap-2 text-sm py-2 px-3 rounded-lg {{ request('category') == $category->id ? 'bg-cyan-500 text-white' : 'hover:bg-slate-100 dark:hover:bg-slate-800' }} transition">
                                 <span class="inline-block w-3 h-3 rounded-full" style="background-color: {{ $category->color }}"></span>
                                 {{ $category->name }}
@@ -40,8 +40,22 @@
                     </div>
                 </div>
 
+                <!-- Academic Year -->
+                <div class="mb-6">
+                    <h4 class="font-semibold mb-3 text-sm uppercase text-slate-600 dark:text-slate-400">Angkatan BEM</h4>
+                    <div class="space-y-2">
+                        @foreach($angkatanBems as $angkatan)
+                            <a href="{{ request()->fullUrlWithQuery(['angkatan' => $angkatan->id]) }}"
+                                class="flex items-center gap-2 text-sm py-2 px-3 rounded-lg {{ request('angkatan') == $angkatan->id ? 'bg-blue-500 text-white' : 'hover:bg-slate-100 dark:hover:bg-slate-800' }} transition">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                {{ $angkatan->tahun }}
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
+
                 <!-- Clear Filters -->
-                @if(request('search') || request('category'))
+                @if(request('search') || request('category') || request('angkatan'))
                     <a href="/berita" class="block w-full text-center px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg text-sm font-semibold hover:bg-slate-300 dark:hover:bg-slate-600 transition">
                         Hapus Filter
                     </a>

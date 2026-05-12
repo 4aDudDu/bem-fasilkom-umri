@@ -5,7 +5,17 @@
 <div class="bg-gradient-to-r from-slate-900 to-slate-800 py-12 text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 class="text-5xl font-bold mb-4">Struktur Organisasi</h1>
-        <p class="text-slate-300 text-lg">Angkatan {{ $activeAngkatan?->formatted_name ?? 'BEM' }}</p>
+        <p class="text-slate-300 text-lg mb-8">Kepengurusan BEM Fasilkom Periode {{ $activeAngkatan?->tahun }}</p>
+        
+        <!-- Year Selector -->
+        <div class="flex flex-wrap justify-center gap-2 mt-6">
+            @foreach($allAngkatan as $angkatan)
+                <a href="{{ route('struktur', ['tahun' => $angkatan->tahun]) }}" 
+                   class="px-4 py-2 rounded-full border transition-all duration-300 {{ $activeAngkatan->id == $angkatan->id ? 'bg-white text-slate-900 border-white' : 'border-white/30 text-white hover:bg-white/10' }}">
+                    {{ $angkatan->tahun }}
+                </a>
+            @endforeach
+        </div>
     </div>
 </div>
 

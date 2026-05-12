@@ -49,12 +49,14 @@ class BeritaResource extends Resource
                             ->schema([
                                 Forms\Components\FileUpload::make('thumbnail')
                                     ->image()
+                                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/heic', 'image/heif'])
                                     ->disk('public')
                                     ->directory('berita/thumbnails')
                                     ->required(),
                                 Forms\Components\FileUpload::make('images')
                                     ->label('Gallery Foto (Opsional)')
                                     ->image()
+                                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/heic', 'image/heif'])
                                     ->multiple()
                                     ->reorderable()
                                     ->disk('public')
@@ -88,7 +90,8 @@ class BeritaResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\ImageColumn::make('thumbnail')
-                    ->circular(),
+                    ->disk('public')
+                    ->square(),
                 Tables\Columns\TextColumn::make('title')
                     ->searchable()
                     ->limit(40)
@@ -113,6 +116,9 @@ class BeritaResource extends Resource
                     ->sortable(),
             ])
             ->filters([
+                Tables\Filters\SelectFilter::make('angkatanBem')
+                    ->relationship('angkatanBem', 'tahun')
+                    ->label('Angkatan BEM'),
                 Tables\Filters\SelectFilter::make('category')
                     ->relationship('category', 'name'),
                 Tables\Filters\SelectFilter::make('angkatan')

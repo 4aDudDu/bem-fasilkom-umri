@@ -17,13 +17,20 @@ class GalleryController extends Controller
             $query->where('category_id', $request->category);
         }
 
+        if ($request->has('angkatan') && $request->angkatan) {
+            $query->where('angkatan_bem_id', $request->angkatan);
+        }
+
         $galeri = $query->paginate(24);
         $categories = Category::active()->get();
+        $angkatanBems = \App\Models\AngkatanBem::orderBy('tahun', 'desc')->get();
 
         return view('pages.gallery', [
             'galeri' => $galeri,
             'categories' => $categories,
+            'angkatanBems' => $angkatanBems,
             'selectedCategory' => $request->category,
+            'selectedAngkatan' => $request->angkatan,
         ]);
     }
 

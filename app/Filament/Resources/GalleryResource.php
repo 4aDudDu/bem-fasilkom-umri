@@ -37,6 +37,7 @@ class GalleryResource extends Resource
                         Forms\Components\FileUpload::make('image')
                             ->label('Cover Image')
                             ->image()
+                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/heic', 'image/heif'])
                             ->disk('public')
                             ->directory('gallery')
                             ->required()
@@ -44,6 +45,7 @@ class GalleryResource extends Resource
                         Forms\Components\FileUpload::make('images')
                             ->label('Gallery Foto (Dokumentasi)')
                             ->image()
+                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/heic', 'image/heif'])
                             ->multiple()
                             ->reorderable()
                             ->disk('public')
@@ -60,6 +62,7 @@ class GalleryResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\ImageColumn::make('image')
+                    ->disk('public')
                     ->square(),
                 Tables\Columns\TextColumn::make('title')
                     ->searchable()

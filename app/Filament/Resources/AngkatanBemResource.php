@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\AngkatanBemResource\Pages;
-use App\Filament\Resources\AngkatanBemResource\RelationManagers;
 use App\Models\AngkatanBem;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -11,28 +10,29 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class AngkatanBemResource extends Resource
 {
     protected static ?string $model = AngkatanBem::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-calendar-days';
+
+    protected static ?string $navigationLabel = 'Angkatan BEM';
+
+    protected static ?string $pluralLabel = 'Angkatan BEM';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('tahun_awal')
+                Forms\Components\TextInput::make('tahun')
+                    ->label('Tahun Akademik')
+                    ->placeholder('Contoh: 2024/2025')
                     ->required(),
-                Forms\Components\TextInput::make('tahun_akhir')
-                    ->required(),
-                Forms\Components\TextInput::make('nama')
-                    ->maxLength(255)
-                    ->default(null),
                 Forms\Components\Textarea::make('deskripsi')
                     ->columnSpanFull(),
                 Forms\Components\Toggle::make('is_active')
+                    ->label('Set sebagai Angkatan Aktif')
                     ->required(),
             ]);
     }
@@ -41,17 +41,13 @@ class AngkatanBemResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('tahun_awal'),
-                Tables\Columns\TextColumn::make('tahun_akhir'),
-                Tables\Columns\TextColumn::make('nama')
-                    ->searchable(),
+                Tables\Columns\TextColumn::make('tahun')
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\IconColumn::make('is_active')
+                    ->label('Aktif')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -60,6 +56,16 @@ class AngkatanBemResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\Action::make('activate')
+                    ->label('Aktifkan')
+                    ->icon('heroicon-o-check-circle')
+                    ->color('success')
+                    ->action(function (AngkatanBem $record) {
+                        AngkatanBem::query()->update(['is_active' => false]);
+                        $record->update(['is_active' => true]);
+                    })
+                    ->requiresConfirmation()
+                    ->hidden(fn (AngkatanBem $record) => $record->is_active),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -67,13 +73,6 @@ class AngkatanBemResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
-    }
-
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
     }
 
     public static function getPages(): array

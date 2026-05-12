@@ -26,6 +26,7 @@ class MemberResource extends Resource
                         Forms\Components\FileUpload::make('photo')
                             ->image()
                             ->avatar()
+                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/heic', 'image/heif'])
                             ->disk('public')
                             ->directory('members')
                             ->imageEditor()
@@ -63,6 +64,7 @@ class MemberResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\ImageColumn::make('photo')
+                    ->disk('public')
                     ->circular(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
