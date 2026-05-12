@@ -26,7 +26,7 @@ class LaporanController extends Controller
     {
         $validated = $request->validate([
             'nama' => 'required|string|max:255',
-            'nim' => 'required|string|max:20',
+            'nim' => 'nullable|string|max:20',
             'email' => 'required|email',
             'kategori_laporan' => ['required', Rule::in(array_keys(Laporan::$kategoriLaporan))],
             'isi_laporan' => 'required|string|min:5',
@@ -40,26 +40,21 @@ class LaporanController extends Controller
 
         $laporan = Laporan::create($validated);
 
-        /*
+        // Send to Discord
         try {
             $messageId = $this->discordService->sendLaporanEmbed($laporan);
-            $laporan->update(['discord_message_id' => $messageId]);
+            if ($messageId) {
+                $laporan->update(['discord_message_id' => $messageId]);
+            }
         } catch (\Exception $e) {
             \Log::error('Discord webhook error: ' . $e->getMessage());
         }
-        */
 
-        if ($request->wantsJson()) {
-            return response()->json([
-                'success' => true,
-                'message' => 'Laporan berhasil dikirim',
-                'laporan_id' => $laporan->id,
-            ]);
-        }
-
-        return redirect()->back()
-            ->with('success', 'Laporan Anda telah berhasil dikirim. Kami akan segera memproses.')
-            ->with('laporan_id', $laporan->id);
+        return response()->json([
+            'success' => true,
+            'message' => 'Laporan berhasil dikirim',
+            'laporan_id' => $laporan->id,
+        ]);
     }
 
     public function checkStatus($id)
